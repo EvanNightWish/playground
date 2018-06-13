@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class testStream {
+    public static void main(String args[]) {
+        testStream.test2();
+    }
+
+    public static void test1() {
+        List<Integer> test1 = Arrays.asList(13,-4,7,-10,34,-1);
+
+        test1.
+                stream()
+                .filter(x -> x > 0)
+                .sorted()
+                .mapToDouble(Integer::doubleValue)
+                .mapToObj(x -> x + " score")
+                .forEach(System.out::println);
+    }
+
+    public static void test2() {
+        List<String> test2 = Arrays.asList("a","b","c","d","e");
+        test2
+                .stream()
+                .filter(s -> {
+                    System.out.println("filter:" + s);
+                    return true;
+                })
+                .forEach(s -> {
+                    System.out.println("foreach: " + s);
+                });
+    }
+
+    public static void test3() {
+
+    }
+}
