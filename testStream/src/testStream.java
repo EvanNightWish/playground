@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 public class testStream {
     public static void main(String args[]) {
-        testStream.test2();
+        testStream.test5();
     }
 
     public static void test1() {
@@ -34,6 +34,51 @@ public class testStream {
     }
 
     public static void test3() {
+        List<String> test = Arrays.asList("a1", "b2", "a2", "c3", "d4");
+        test
+                .stream()
+                .map(s -> {
+                    System.out.println("map: " + s);
+                    return s.toUpperCase();
+                })
+                .filter(s -> {
+                    System.out.println("filter: " + s);
+                    return s.startsWith("A");
+                })
+                .forEach(s -> System.out.println("forEach: " + s));
+    }
 
+    public static void test4() {
+        List<String> test = Arrays.asList("a1", "b2", "a2", "c3", "d4");
+        test
+                .stream()
+                .filter(s -> {
+                    System.out.println("filter: " + s);
+                    return s.toUpperCase().startsWith("A");
+                })
+                .map(s -> {
+                    System.out.println("map: " + s);
+                    return s.toUpperCase();
+                })
+                .forEach(s -> System.out.println("forEach: " + s));
+    }
+
+    public static void test5() {
+        List<String> test = Arrays.asList("a1", "b2", "a2", "c3", "d4");
+        test
+                .stream()
+                .sorted((s1, s2) -> {
+                    System.out.printf("sort: %s; %s\n", s1, s2);
+                    return s1.compareTo(s2);
+                })
+                .filter(s -> {
+                    System.out.println("filter: " + s);
+                    return s.startsWith("a");
+                })
+                .map(s -> {
+                    System.out.println("map: " + s);
+                    return s.toUpperCase();
+                })
+                .forEach(s -> System.out.println("forEach: " + s));
     }
 }
